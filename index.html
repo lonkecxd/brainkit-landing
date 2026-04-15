@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brainkit — 让领域知识变成产品</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .tagline {
+      font-size: 1.25rem;
+      color: #a78bfa;
+      margin-bottom: 48px;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 48px 0 16px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 1.1rem;
+      color: #c4b5fd;
+      margin: 24px 0 8px;
+      font-weight: 600;
+    }
+    p {
+      color: #e2e8f0;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .highlight {
+      background: rgba(167, 139, 250, 0.15);
+      border-left: 3px solid #a78bfa;
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight p {
+      margin: 0;
+      color: #e2e8f0;
+    }
+    .problem-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 3px solid #ef4444;
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .problem-box p {
+      color: #fecaca;
+    }
+    .steps {
+      list-style: none;
+      margin: 24px 0;
+    }
+    .steps li {
+      color: #e2e8f0;
+      padding: 12px 0;
+      padding-left: 32px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .steps li:last-child {
+      border-bottom: none;
+    }
+    .steps li::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 20px;
+      height: 20px;
+      background: #a78bfa;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-align: center;
+      line-height: 20px;
+    }
+    .workflow {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .workflow p {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #c4b5fd;
+    }
+    .workflow .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+    .workflow .flow span {
+      background: rgba(167, 139, 250, 0.2);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    .workflow .flow .arrow {
+      color: #a78bfa;
+    }
+    .cta {
+      text-align: center;
+      margin: 64px 0 32px;
+      padding: 40px 24px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .cta h2 {
+      margin-top: 0;
+      font-size: 1.75rem;
+    }
+    .cta p {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cta .note {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      margin-top: 16px;
+    }
+    .opensource {
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+    .opensource a {
+      color: #a78bfa;
+      text-decoration: none;
+    }
+    .opensource a:hover {
+      text-decoration: underline;
+    }
+    .separator {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 48px 0;
+    }
+    .badge {
+      display: inline-block;
+      background: #a78bfa;
+      color: #1a1a2e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      .tagline { font-size: 1.1rem; }
+      h2 { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Brainkit</h1>
+    <p class="tagline">让领域知识变成产品</p>
+
+    <div class="problem-box">
+      <p>一位资深心理咨询师，想把自己对「青少年焦虑」的判断框架做成 app，帮助更多人。不会写代码，找开发要等 3 个月、烧几万块，最后做出来还走样。</p>
+      <p style="margin-top:12px">一位 20 年经验的 HR，想把筛选简历的「直觉」系统化。找不到愿意接这种小需求的技术合伙人。</p>
+      <p style="margin-top:12px; font-weight:600; color:#fca5a5">他们缺的从来不是想法，而是把想法变成产品的路径。</p>
+    </div>
+
+    <h2>现状</h2>
+    <div class="highlight">
+      <p><strong>以前：</strong>领域专家 → 口头描述 → 产品经理理解 → 开发实现，信息损耗 50%+，最终产品走样</p>
+      <p style="margin-top:12px"><strong>现在（vibe coding）：</strong>损耗降低，但「把自己的判断框架说清楚」这件事，仍然需要专家手动完成，且没有工具支持。</p>
+    </div>
+
+    <h2>我们在做什么</h2>
+    <p><strong>Brainkit + wiki-anything</strong> 是一套工具，帮领域专家把多年积累的判断框架，转化成可定价、可分发的数字产品。</p>
+
+    <div class="workflow">
+      <p>你的判断框架</p>
+      <div class="flow">
+        <span>wiki-anything</span>
+        <span class="arrow">→</span>
+        <span>知识数据库</span>
+        <span class="arrow">→</span>
+        <span>生成 App</span>
+        <span class="arrow">→</span>
+        <span>Marketplace</span>
+      </div>
+    </div>
+
+    <h2>核心流程</h2>
+    <ol class="steps">
+      <li data-step="1">说清楚你要解决的问题 — AI 帮你梳理</li>
+      <li data-step="2">AI 生成数据库结构 — 你确认</li>
+      <li data-step="3">对话中积累数据 — AI 帮你扩展，你验证</li>
+      <li data-step="4">一键生成 App — HTML 格式，本地就跑通</li>
+      <li data-step="5">上传 Marketplace — 设置价格，有人用你就赚钱</li>
+    </ol>
+
+    <h2>它适合谁</h2>
+    <p>心理咨询师想把诊断经验产品化 · HR 顾问想把面试方法论做成工具 · 行业专家想把经验判断变成可销售的模块 · 任何有「领域知识」+「想变现」的人</p>
+    <p style="margin-top:8px; color:#a78bfa; font-weight:500">不需要会写代码。不需要找技术合伙人。</p>
+
+    <hr class="separator">
+
+    <h2>理念</h2>
+    <div class="highlight">
+      <p>LLM 把「团队」变成了可拆分的随需租用的资源，而领域知识本身的系统化、商品化、流动化，才是那个巨大的未开发领域。</p>
+      <p style="margin-top:12px; color:#c4b5fd">你的判断框架，是有价值的资产。Brainkit 让它变成可定价的产品。</p>
+    </div>
+
+    <div class="cta">
+      <h2>加入等待列表</h2>
+      <p style="color:#94a3b8">暂不对外开放，预计 2025 年 Q2</p>
+      <p style="color:#64748b; font-size:0.85rem">如果你对这个方向感兴趣，我们会第一时间通知你</p>
+    </div>
+
+    <div class="opensource">
+      <p>核心工具 <strong>wiki-anything</strong> 将以 <strong>AGPL v3</strong> 协议开源 <span class="badge">AGPL v3</span></p>
+      <p style="margin-top:8px">工具本身免费 · 用你自己的 API key，成本可控 · 云端 Marketplace 服务收费（抽成）</p>
+      <p style="margin-top:8px">AGPL 协议：禁止闭源二次开发</p>
+    </div>
+  </div>
+</body>
+</html>
